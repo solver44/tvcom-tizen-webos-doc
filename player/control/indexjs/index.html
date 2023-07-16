@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742824893066">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.0.3">
+
+    <!-- Primary Meta Tags -->
+    <title>/src/components/PlayerTV/index.js</title>
+    <meta name="title" content="/src/components/PlayerTV/index.js">
+    <meta name="description" content="hls.js - для стрима исползуется" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/player/control/indexjs/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/player/control/indexjs/">
+    <meta property="og:title" content="/src/components/PlayerTV/index.js">
+    <meta property="og:description" content="hls.js - для стрима исползуется">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/player/control/indexjs/">
+    <meta property="twitter:title" content="/src/components/PlayerTV/index.js">
+    <meta property="twitter:description" content="hls.js - для стрима исползуется">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../resources/css/retype.css?v=3.0.3.742824893066" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.742824893066" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.742824893066" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.742824893066" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">TVCOM Tizen Webos</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="srccomponentsplayertvindexjs" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#srccomponentsplayertvindexjs">#</doc-anchor-trigger>
+        <span>/src/components/PlayerTV/index.js</span>
+    </h1>
+</doc-anchor-target>
+<p><a href="https://nochev.github.io/hls.js/docs/html/">hls.js - для стрима исползуется</a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// Используется для переключения звуковых дорожек
+function replaceIndexInUrl(url, newIndex) {
+  //...
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="параметры">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#параметры">#</doc-anchor-trigger>
+        <span>Параметры</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>controlPlugins</span>
+</span> - объект необходим для того, чтобы какие элементы управления отображались или скрывались (например: следующий, предыдущий, skip и другие)</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>data</span>
+</span> - данные от фильма или телеканала</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>TV</span>
+</span> - если true значит это телеканал</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>programList</span>
+</span> - все телепередачи, для телеканала</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>loading</span>
+</span> - данные загружаются или происходит какая-то загрузка?</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>setPosition</span>
+</span> - функция для назначения позиции видео(в секундах), только для фильмов или сериалов используется</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>currentPosition</span>
+</span> - текущая позиция видео (в секундах)</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>currentProgram</span>
+</span> - текущая телепередача, для телеканала</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>customTracks</span>
+</span> - кастомный звуковые дорожки, по умолчанию автоматически будет брать</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onAutoNext</span>
+</span> - функция нужна для перехода в начало текущей прямой телепередачи или перехода на прямой эфир, также нужна для автоматического переключения на следующую программу</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onPrevious</span>
+</span> - функция вызывается при нажатии предыдущей кнопки</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onNext</span>
+</span> - функция вызывается при нажатии следующей кнопки</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onShowControl</span>
+</span> - функция вызывается при появление управление плеера</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onHideControl</span>
+</span> - функция вызывается при исчезнавение управление плеера</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onShowAudioModal</span>
+</span> - функция вызывается при появление модальное окно (от аудио дорожек, субтитры, качество видео)</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onHideAudioModal</span>
+</span> - функция вызывается при исчезнавение модальное окно</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>hideControl</span>
+</span> - принудительная проверка видеоконтроля, если true то контроль пропадает</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// Требуется для mp4, иначе используется hls
+function addSourceToVideo(element, src, type) {
+  //...
+}</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<div class="codeblock-title">Функция для инициализации видео</div>
+<pre class="language-javascript"><code v-pre class="language-javascript">function initHLS(uri, langOrAudioId = null) {
+  try {
+    destroyHls(); // Уничтожаем текущий Hls
+
+    if (!TV &amp;&amp; !uri.includes(&quot;m3u8&quot;)) {
+      // Если не TV и не содержит &quot;m3u8&quot; в URI
+      addSourceToVideo(player.current, uri, &quot;video/mp4&quot;); // Добавляем источник к текущему видео в формате mp4
+    } else if (Hls.isSupported()) {
+      // Если поддерживается HLS
+      var tempHls = new Hls(); // Создаем новый объект Hls
+      hls.current = tempHls; // Устанавливаем текущий объект Hls
+      tempHls.attachMedia(player.current); // Присоединяем текущее видео к объекту Hls
+      tempHls.loadSource(uri); // Загружаем источник
+
+      if (customTracks?.length) {
+        // Если есть пользовательские треки
+        console.log(customTracks); // Выводим пользовательские треки в консоль
+        customTracks.map((c) =&gt; {
+          c.id = c.index;
+          c.lang = c.display_name;
+          return c;
+        }); // Обновляем id и lang пользовательских треков
+        var currentTrack = langOrAudioId || customTracks[0].id; // Устанавливаем текущий трек
+        setAudioTracks(customTracks); // Устанавливаем пользовательские треки
+        setAudioTrack(currentTrack); // Устанавливаем текущий трек
+      } else {
+        tempHls.on(Hls.Events.AUDIO_TRACKS_UPDATED, () =&gt; {
+          var currentTrack = langOrAudioId || Math.max(tempHls.audioTrack, 0); // Устанавливаем текущий трек
+          setAudioTrack(currentTrack);
+
+          var url = tempHls?.audioTracks.find((a) =&gt; a.id == currentTrack)?.url; // Получаем URL аудио трека
+          if (url) {
+            tempHls.audioTrack = currentTrack; // Устанавливаем текущий аудио трек
+          }
+          setAudioTracks(tempHls.audioTracks); // Устанавливаем доступные аудио треки
+        });
+      }
+
+      tempHls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, function (event, data) {
+        setSubtitles(tempHls.subtitleTracks); // Устанавливаем доступные субтитры
+      });
+
+      tempHls.once(Hls.Events.BUFFER_APPENDED, () =&gt; {
+        // setErrorCountVideo(0);
+        if (!currentLoading) return;
+        setCurrentLoading(false);
+      });
+
+      tempHls.on(Hls.Events.ERROR, async function (event, dataEvent) {
+        if (dataEvent.fatal) {
+          switch (dataEvent.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR:
+              console.log(&quot;fatal network error encountered, try to recover&quot;); // Встретилась фатальная сетевая ошибка, попробуйте восстановить
+              tempHls.startLoad(); // Начать загрузку
+              break;
+            case Hls.ErrorTypes.MEDIA_ERROR:
+              console.log(&quot;fatal media error encountered, try to recover&quot;); // Встретилась фатальная ошибка медиа, попробуйте восстановить
+              tempHls.recoverMediaError(); // Восстановить ошибку медиа
+              break;
+          }
+        }
+      });
+
+      tempHls.on(Hls.Events.MANIFEST_PARSED, (event, data) =&gt; {
+        if (subtitleTrack &amp;&amp; subtitleTrack !== &quot;off&quot;) {
+          setTimeout(() =&gt; {
+            if (hls.current) hls.current.subtitleTrack = subtitleTrack;
+            if (tempHls) tempHls.subtitleTrack = subtitleTrack; // Устанавливаем текущи субтитр
+          }, 500);
+        }
+
+        if (level) {
+          if (hls.current) hls.current.currentLevel = level;
+          if (tempHls) tempHls.currentLevel = level;
+        }
+
+        var lvls = tempHls.levels.filter(
+          (lvl, index, self) =&gt;
+            index === self.findIndex((t) =&gt; t.name === lvl.name)
+        );
+        setLevels(lvls); // Устанавливаем доступные уровни (битрейты видео)
+
+        if (!level) setLevel(tempHls.currentLevel); // Устанавливаем текущий уровень (битрейт)
+      });
+    } else if (
+      player.current &amp;&amp;
+      player.current.canPlayType(&quot;application/vnd.apple.mpegurl&quot;)
+    ) {
+      player.current.src = uri; // Устанавливаем источник для текущего видео
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (player.current) player.current.load(); // Загружаем текущее видео
+
+    return tempHls; // Возвращаем объект Hls
+  }
+}</code></pre>
+</doc-codeblock></div>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">useEffect(() =&gt; {
+  var uri = data.url ?? data.uri; // Получаем URI для проигрывания из данных (data), если не определено, то используем URI
+  if (loading || !player.current || !uri) return; // Если происходит загрузка или проигрыватель не определен
+  // или URL не определен, то прекращаем выполнение
+
+  var tempHls = initHLS(uri); // Инициализируем HLS с указанным URL
+  return () =&gt; {
+    destroyHls(); // Уничтожаем объект HLS при завершении useEffect
+    if (tempHls) tempHls.destroy(); // Если объект HLS существует, то также уничтожаем его
+  };
+}, [loading, player, data.url, data.uri]);
+
+// Получаем информацию о предыдущей телепрограмме для текущего телеканала
+var leftProgram =
+  !loading &amp;&amp;
+  TV &amp;&amp;
+  (nullLeft ? null : (
+    &lt;ProgramInfo
+      last
+      programList={programList}
+      id={data.program_id}
+      beginTime={data.program_begin_time}
+      onChange={(program) =&gt; setPrevProgram(program)}
+      onError={setNullLeft}
+    /&gt;
+  ));
+
+// Получаем информацию о следующей телепрограмме для текущего телеканала
+var rightProgram =
+  !loading &amp;&amp;
+  TV &amp;&amp;
+  (nullRight ? null : (
+    &lt;ProgramInfo
+      reverse
+      // onChange={(program) =&gt; setNextProgram(program)}
+      src={data.next_program_preview_url}
+      title={data.next_program_name}
+      times={[data.next_program_begin_time, data.next_program_end_time]}
+      beginTime={data.program_begin_time}
+      onError={setNullRight}
+    /&gt;
+  ));
+
+// Функция для изменения аудио-трека
+function changeTrack(id) {
+  try {
+    setAudioTrack(id); // Устанавливаем выбранный аудио-трек
+    if (!TV) {
+      var uri = data.url ?? data.uri; // Получаем URI для проигрывания из данных (data), если не определено, то используем URI
+      if (customTracks?.length) uri = replaceIndexInUrl(uri, id); // Если есть пользовательские треки, заменяем индекс в URI
+
+      setTempTrackPosition(player.current?.currentTime); // Устанавливаем текущую позицию проигрывания
+      var tempHls = initHLS(uri, id); // Инициализируем HLS с указанным URI и аудио-треком
+    } else {
+      var tempHls = hls.current; // Используем текущий объект HLS
+    }
+    tempHls.audioTrack = id; // Устанавливаем выбранный аудио-трек в объекте HLS
+  } catch (error) {}
+}
+
+// Функция для управления субтитрами
+function handleSubtitle(track) {
+  if (track === &quot;off&quot;) {
+    setSubtitleTrack(&quot;off&quot;); // Устанавливаем отключение субтитров
+    hls.current.subtitleTrack = -1; // Устанавливаем отключение субтитров в объекте HLS
+  }
+  if (!track?.id) return;
+  setSubtitleTrack(+track.id); // Устанавливаем выбранный субтитр
+  hls.current.subtitleTrack = +track.id; // Устанавливаем выбранный субтитр в объекте HLS
+}
+
+// Функция для управления уровнями качества видео (битрейтами)
+function handleLevel(level) {
+  if (!hls.current) return; // Если объект HLS не определен, прекращаем выполнение
+  hls.current.currentLevel = level?.id; // Устанавливаем выбранный уровень качества видео в объекте HLS
+  setLevel(level?.id); // Устанавливаем выбранный уровень качества видео
+}
+
+// Функция для изменения соотношения сторон видео
+function onChangeAspect(param) {
+  setAspect(param); // Устанавливаем выбранное соотношение сторон видео
+}</code></pre>
+</doc-codeblock></div>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../player/control/control/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">/src/components/Player​TV/Control.​js</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../player/native/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Сам плеер</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "/src/components/PlayerTV/index.js", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>

@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742824893066">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.0.3">
+
+    <!-- Primary Meta Tags -->
+    <title>/src/components/PlayerTV/Control.js</title>
+    <meta name="title" content="/src/components/PlayerTV/Control.js">
+    <meta name="description" content="- состояние загрузки плеера." />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="/player/control/control/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/player/control/control/">
+    <meta property="og:title" content="/src/components/PlayerTV/Control.js">
+    <meta property="og:description" content="- состояние загрузки плеера.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/player/control/control/">
+    <meta property="twitter:title" content="/src/components/PlayerTV/Control.js">
+    <meta property="twitter:description" content="- состояние загрузки плеера.">
+
+    <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
+
+    <link href="../../../resources/css/retype.css?v=3.0.3.742824893066" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.742824893066" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.742824893066" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../../resources/js/prism.js?v=3.0.3.742824893066" defer></script>
+</head>
+<body>
+    <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
+        <div class="absolute bottom-0 left-0 bg-gray-100 dark:bg-dark-800" style="top: 5rem; right: 50%"></div>
+    
+        <header id="docs-site-header" class="sticky top-0 z-30 flex w-full h-16 bg-white border-b border-gray-200 md:h-20 dark:bg-dark-850 dark:border-dark-650">
+            <div class="container relative flex items-center justify-between grow pr-6 md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton docs-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="docs-sidebar-toggle"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
+                            <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">TVCOM Tizen Webos</span>
+                        </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            </li>
+        
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+        
+                            <input class="w-full h-10 transition-colors duration-200 ease-in bg-gray-200 border border-transparent rounded md:text-sm hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-dark-600 dark:border-dark-600 placeholder-gray-400 dark:placeholder-dark-400"
+                            style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search" />
+                        </div>
+        
+                        <!-- Mobile search button mock -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placehokder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button mock -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation"  style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="docs-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-gray-100 border-gray-200 sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton dark:bg-dark-800 dark:border-dark-650">
+            
+                <!-- Render this div, if config.showSidebarFilter is `true` -->
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-white border border-gray-200 rounded shadow-none text-sm focus:outline-none focus:border-gray-600 dark:bg-dark-600 dark:border-dark-600" type="text" placeholder="Filter" />
+                </div>
+            
+                <div class="pl-6 mb-4 mt-1">
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-32 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-48 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                    <div class="w-40 h-3 mb-4 bg-gray-200 rounded-full loading dark:bg-dark-600"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-dark-650">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-dark-650">
+            
+                        <div class="py-3 px-6 md:hidden border-b dark:border-dark-650">
+                            <nav>
+                                <ul class="flex flex-wrap justify-center items-center">
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                    </li>
+            
+                                </ul>
+                            </nav>
+                        </div>
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 dark:bg-dark-850">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="docs-markdown" id="docs-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="docs-sidebar-right-toggle"></div>
+                
+                                <!-- Page content  -->
+<doc-anchor-target id="srccomponentsplayertvcontroljs" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#srccomponentsplayertvcontroljs">#</doc-anchor-trigger>
+        <span>/src/components/PlayerTV/Control.js</span>
+    </h1>
+</doc-anchor-target>
+<doc-anchor-target id="компонент-для-отображения-элементов-управления-плеера">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#компонент-для-отображения-элементов-управления-плеера">#</doc-anchor-trigger>
+        <span>Компонент для отображения элементов управления плеера</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">var SKIP_TIME = 15; // Время пропуска вперед/назад (в секундах)
+var HEIGHT_ICON = is4k === 2 ? 28 : is4k === 1 ? 68 : 34; // Высота иконки (в пикселях), в зависимости от типа видео (4K, HD или SD)
+var CONTROLS_HIDE_TIMEOUT = 3000; // Время появления элементов управления (в миллисекундах)
+
+const aspects = [
+  { text: &quot;Auto&quot;, default: true }, // Автоматический режим соотношения сторон (по умолчанию)
+  { text: &quot;FitToScreen&quot; }, // Подгон под экран
+  { text: &quot;FillToWidth&quot; }, // Заполнение по ширине
+  { text: &quot;ZoomToScreen&quot; }, // Увеличение до размера экрана
+  { text: &quot;ZoomOffScreen&quot; }, // Увеличение за пределы экрана
+  { text: &quot;16:9&quot; }, // Соотношение сторон 16:9
+  { text: &quot;21:9&quot; }, // Соотношение сторон 21:9
+  { text: &quot;18:9&quot; }, // Соотношение сторон 18:9
+  { text: &quot;shrink&quot; }, // Уменьшение размера видео
+];</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="параметры">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#параметры">#</doc-anchor-trigger>
+        <span>Параметры</span>
+    </h3>
+</doc-anchor-target>
+<ul>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>loadingState</span>
+</span> - состояние загрузки плеера.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>startTime</span>
+</span> - время начала контента.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>idChannel</span>
+</span> - идентификатор телеканала.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>endTime</span>
+</span> - время окончания контента.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>player</span>
+</span> - объект проигрывателя.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>plugins</span>
+</span> - объект, определяющий, какие элементы управления отображаются или скрываются (например: следующий, предыдущий, skip и другие).</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>TV</span>
+</span> - флаг, указывающий, является ли проигрывание на телевизоре.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>isLive</span>
+</span> - флаг, указывающий, является ли контент прямой трансляцией.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>setPosition</span>
+</span> - функция для установки текущей позиции проигрывания.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>currentPosition</span>
+</span> - текущая позиция проигрывания.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>isCurrentProgram</span>
+</span> - флаг, указывающий, является ли текущая программа активной.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>children</span>
+</span> - дочерние элементы.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>right</span>
+</span> - компонент следующей телепрограмме.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>left</span>
+</span> - компонент предыдущей телепрограмме.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>aspect</span>
+</span> - выбранное соотношение сторон видео.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onChangeAspect</span>
+</span> - функция для изменения выбранного соотношения сторон.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>track</span>
+</span> - выбранный аудио-трек.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>tracks</span>
+</span> - список доступных аудио-треков.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onChangeAudioTrack</span>
+</span> - функция для изменения выбранного аудио-трека.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>subtitleTrack</span>
+</span> - выбранный субтитр.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>subtitles</span>
+</span> - список доступных субтитров.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onChangeSubtitle</span>
+</span> - функция для изменения выбранного субтитра.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>level</span>
+</span> - выбранный уровень качества видео (битрейт).</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>levels</span>
+</span>- список доступных уровней качества видео.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onChangeLevel</span>
+</span> - функция для изменения выбранного уровня качества видео.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onPrevious</span>
+</span> - обработчик события &quot;предыдущий&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onNext</span>
+</span>&#x60; - обработчик события &quot;следующий&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onAutoNext</span>
+</span>&#x60; - обработчик события &quot;автоматический переход к следующему&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onClickLive</span>
+</span>&#x60; - обработчик события &quot;переход в режим прямого эфира&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onClickRestart</span>
+</span>&#x60; - обработчик события &quot;перезапуск контента&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onShowModal</span>
+</span>&#x60; - обработчик события &quot;открытие модального окна&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onHideModal</span>
+</span>&#x60; - обработчик события &quot;закрытие модального окна&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>tempTrackPosition</span>
+</span>: tempTrackPosition - временная позиция аудио-трека.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onShow</span>
+</span>: onShow - обработчик события &quot;показ элементов управления&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>onHide</span>
+</span>: onHide - обработчик события &quot;скрытие элементов управления&quot;.</li>
+<li><span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-white bg-gray-700 dark:bg-dark-450 h-6 px-2 text-xs rounded-md">
+    <span>hideControl</span>
+</span>: hideControl - флаг, указывающий, следует ли скрыть элементы управления.</li>
+</ul>
+<doc-panel id="часть-1" collapsed>
+    <template #title>Часть 1</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// Обновление значения modifiedPlugins путем объединения объектов Plugins и plugins
+var modifiedPlugins = { ...Plugins, ...plugins };
+
+// Состояние для управления позицией телевизора
+var [TVPos, setTVPos] = useState();
+
+// Состояние для управления модальным режимом (для субтитров, аудио дорожек и для битрейтов)
+var [modalMode, setModalMode] = useState(false);
+
+// Создание референса для записи значения record
+var record = useRef(false);
+
+// Состояние для управления проигрыванием видео
+var [isPlay, setIsPlay] = useState(true);
+
+// Состояние для управления пропуском контента
+var [isSkip, setIsSkip] = useDebounce({ show: false, back: false }, 600);
+
+// Состояние для управления отображением элементов управления
+var [showControl, setShControl] = useState({
+  show: TVPos &amp;&amp; !loadingState ? true : false,
+  clear: false, // clear - при первом открытии телеканал появляется без элементов управления, будет только информация
+  quick: false, // quick - если true появляется только слайдер(ползунок видео) при нажатия вперед назад 
+});
+
+// Создание референса для showControl
+var showControlEl = useRef(showControl);
+
+// Создание референса для timeout
+var timeout = useRef(null);
+
+// Состояние для хранения длительности видео в секундах
+var [durationOfSeconds, setDurationOfSeconds] = useState(0);
+
+// Создание референсов для элементов управления
+var durationOfSecondsEl = useRef();
+var sliderThumb = useRef();
+var progressBar = useRef();
+var seekToolTip = useRef();
+var currentDurationEl = useRef();
+var videoDurationEl = useRef();
+var isSkipEl = useRef({});
+var rangeVideo = useRef();
+var loading = useRef(loadingState);
+var startTimeEl = useRef(startTime);
+var playerRef = useRef(player);
+var isPlayRef = useRef(isPlay);
+
+// Обновление значения isPlayRef.current при изменении состояния isPlay
+useEffect(() =&gt; {
+  isPlayRef.current = isPlay;
+}, [isPlay]);
+
+// Установка позиции проигрывания при изменении временной позиции
+useEffect(() =&gt; {
+  if (!tempTrackPosition) return;
+  seekTo(tempTrackPosition);
+}, [tempTrackPosition]);
+
+// Фокусировка на ползунке видео при показе элементов управления
+useEffect(() =&gt; {
+  if (!rangeVideo.current) return;
+  if (showControl.show &amp;&amp; !showControl.clear) rangeVideo.current.focus();
+}, [showControl.show, showControl.clear]);
+
+// Установка progressBar.current равным rangeVideo.current
+useEffect(() =&gt; {
+  progressBar.current = rangeVideo.current;
+}, [showControl]);
+
+// Обновление playerRef.current при изменении значения player
+useEffect(() =&gt; {
+  playerRef.current = player;
+
+  window.removeEventListener(&quot;keydown&quot;, keydownHandle);
+  // Добавление события keydown для обработки нажатий клавиш
+  window.addEventListener(&quot;keydown&quot;, keydownHandle);
+  return function () {
+    window.removeEventListener(&quot;keydown&quot;, keydownHandle);
+  };
+}, [player, isSkip]);
+
+// Обновление startTimeEl.current при изменении значения startTime
+useEffect(() =&gt; {
+  startTimeEl.current = startTime;
+  if (!startTime || !player) return;
+  // Сброс слайдера (ползунок видео)
+  resetSlider();
+}, [startTime]);
+
+// Установка durationOfSecondsEl.current равным 0 при изменении значения isLive
+useEffect(() =&gt; {
+  durationOfSecondsEl.current = 0;
+  if (player) resetSlider();
+  setTimeout(() =&gt; {
+    if (!TVPos) return;
+    setTVPos(null);
+  }, 500);
+}, [isLive]);
+
+useEffect(() =&gt; {
+  if (!hideControl) return;
+  // Установка значения showControl.show в false
+  setShowControl({ ...showControl, show: false });
+}, [hideControl]);
+
+// Обновление loading.current при изменении значения loadingState
+useEffect(() =&gt; {
+  loading.current = loadingState;
+  if (TVPos) {
+    // Показ элементов управления
+    setShControl({ show: true, clear: false, quick: false });
+    showControlEl.current = { show: true, clear: false, quick: false };
+  } else if (!loadingState) {
+    // Перезагрузка таймаута для скрытия элементов управления
+    reloadTimeout(TV ? true : false);
+  }
+  if (loadingState) return;
+  durationOfSecondsEl.current = 0;
+  if (!isPlay) setIsPlay(true);
+  if (TV) return;
+  setTimeout(() =&gt; {
+    console.log(&quot;record position started&quot;);
+    if (record.current) return;
+    record.current = true;
+  }, 10000);
+}, [loadingState]);
+
+// Обновление значения TVPos при изменении значения idChannel
+useEffect(() =&gt; {
+  if (!TVPos) reloadTimeout(TV ? true : false);
+}, [idChannel]);
+
+// Обновление слайдера и запуск обновления позиции
+useEffect(() =&gt; {
+  if (!player || loading.current) return;
+  if (player) resetSlider();
+  // Запуск обновления позиции
+  return startUpdate();
+}, [player, loadingState, durationOfSeconds, isLive]);
+
+// Обновление видимой продолжительности при изменении значения durationOfSeconds
+useEffect(() =&gt; {
+  if (!endTime &amp;&amp; videoDurationEl.current)
+    videoDurationEl.current.innerText = toHHMMSS(durationOfSeconds);
+}, [durationOfSeconds, player]);
+
+// Обновление класса для элементов управления в зависимости от значения showControl.quick
+useEffect(() =&gt; {
+  if (!playerControls.current) return;
+  if (showControl.quick) playerControls.current.classList.add(classes.no_bg);
+  else playerControls.current.classList.remove(classes.no_bg);
+}, [showControl.quick]);
+
+// Обработка нажатий клавиш
+function keydownHandle(e) {
+  // Обработка событий нажатия клавиш
+
+  // ...
+
+  // Обработка событий нажатия клавиш на progressBar и seekToolTip
+
+  // ...
+}
+
+// Перезагрузка таймаута для скрытия элементов управления
+function reloadTimeout(clear = false, quick = false) {
+  if (loading.current) return;
+  // Обновление progressBar
+  // ...
+  // Остановка предыдущего таймаута и установка нового значения для showControl
+  if (TV) {
+    clearTimeout(timeout.current);
+  } else {
+    window.clearTimeout(timeout.current);
+  }
+  setShowControl({ show: true, clear, quick });
+}
+
+// Установка значения для showControl
+function setShowControl(value) {
+  showControlEl.current = value;
+  setShControl(value);
+  if (!value.show) {
+    // Если showControl.show равно false, вызывается onHide
+    if (onHide) onHide({ clear: value.clear });
+    return;
+  } else if (onShow &amp;&amp; !loading.current) {
+    // Вызов onShow для показа элементов управления
+    onShow({ clear: value.clear });
+  }
+
+  if (TV) {
+    // Установка таймаута для скрытия элементов управления
+    timeout.current = setTimeout(() =&gt; {
+      setShowControl({ ...value, show: false });
+      clearTimeout(timeout.current);
+    }, CONTROLS_HIDE_TIMEOUT);
+  } else {
+    timeout.current = window.setTimeout(() =&gt; {
+      setShowControl({ ...value, show: false });
+      clearTimeout(timeout.current);
+    }, CONTROLS_HIDE_TIMEOUT);
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-panel>
+<doc-panel id="часть-2" collapsed>
+    <template #title>Часть 2</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// Получение текущего времени проигрывателя
+function getCurrentTimePlayer(ply = null) {
+  // Если передан параметр ply, используется его значение, иначе используется значение player или playerRef.current
+  var temp = ply ?? (player || playerRef.current);
+  // Округление текущего времени проигрывателя
+  temp = Math.floor(temp.currentTime);
+  return temp;
+}
+
+// Перемещение проигрывателя на указанное количество секунд
+function seekTo(sec) {
+  player.currentTime = sec;
+}
+
+// Перемещение проигрывателя на позицию пропуска контента
+function jumpVideo() {
+  player.currentTime = isSkip.pos ?? 0;
+}
+
+// Проверка, находится ли проигрыватель на паузе
+function paused(ply) {
+  var temp = ply ?? (player || playerRef.current);
+  return temp.paused;
+}
+
+// Получение длительности видео
+function getVideoDuration() {
+  var dur = player?.duration;
+  // Если значение длительности некорректное (NaN), используется значение durationOfSeconds
+  dur = Number.isNaN(dur) ? durationOfSeconds : Math.floor(dur);
+  return dur;
+}
+
+// Сброс слайдера
+function resetSlider() {
+  var videoDuration = getVideoDuration();
+
+  var oldPos = TVPos
+    ? TVPos &gt; videoDuration
+      ? videoDuration - 30
+      : TVPos
+    : null;
+
+  var playerCurrentTime = getCurrentTimePlayer();
+
+  if (playerCurrentTime &lt;= 0 &amp;&amp; (oldPos || currentPosition != 0))
+    seekTo(oldPos ?? currentPosition);
+
+  var c = videoDuration;
+
+  if (TV) {
+    var start = unixTimeToFormatted(startTimeEl.current).split(&quot;:&quot;);
+    var t1 = start[0] * 60 + +start[1];
+    var end = unixTimeToFormatted(endTime).split(&quot;:&quot;);
+    var t2 = end[0] * 60 + +end[1];
+    durationOfSecondsEl.current = (t2 - t1) * 60;
+    setDurationOfSeconds((t2 - t1) * 60);
+    return;
+  }
+
+  durationOfSecondsEl.current = Number.isNaN(c) ? 0 : c;
+  setDurationOfSeconds(Number.isNaN(c) ? 0 : c);
+
+  updateProgressBar();
+}
+
+// Запуск обновления позиции проигрывателя
+function startUpdate() {
+  player.removeEventListener(&quot;timeupdate&quot;, updateProgressBar);
+  player.addEventListener(&quot;timeupdate&quot;, updateProgressBar, false);
+
+  return () =&gt; {
+    player.removeEventListener(&quot;timeupdate&quot;, updateProgressBar);
+  };
+}
+
+// Обновление прогресс-бара
+function updateProgressBar() {
+  // Проверка условий для обновления прогресс-бара
+  if (
+    !progressBar.current ||
+    showControlEl.current?.clear ||
+    loading.current ||
+    paused() ||
+    isSkipEl.current?.show
+  )
+    return;
+
+  var playerCurrentTime = getCurrentTimePlayer();
+
+  var percentage = isLive ? 0 : playerCurrentTime;
+
+  if (isLive) {
+    var t = getDateWithTimezone();
+    var start = unixTimeToFormatted(startTime).split(&quot;:&quot;);
+    var t1 = (start[0] * 60 + +start[1]) * 60;
+    percentage = (t.getHours() * 60 + t.getMinutes()) * 60 + t.getSeconds();
+    percentage -= t1;
+  }
+
+  if (setPosition &amp;&amp; record.current)
+    setPosition(
+      playerCurrentTime &lt;=
+        (durationOfSecondsEl.current &gt; 0
+          ? durationOfSecondsEl.current
+          : getVideoDuration()) -
+          60
+        ? playerCurrentTime
+        : -1
+    );
+
+  setSeekToolTip(percentage);
+  setTrackValue(percentage);
+}
+
+// Функция для переключения состояния проигрывания
+var togglePlay = () =&gt; {
+  // Изменение состояния проигрывания
+  setIsPlay(!isPlayRef.current);
+  // Постановка проигрывателя на паузу или воспроизведение
+  if (isPlayRef.current) playerRef.current.pause();
+  else playerRef.current.play();
+};
+
+// Референс для значения longJumping
+var longJumping = useRef({ long: false, time: false });
+
+// Обработка события нажатия клавиши на прогресс-баре
+var progressKeyDown = (e) =&gt; {
+  // Проверка, является ли видео прямой трансляцией
+  if (isLive) return;
+  // Проверка нажатых клавиш LEFT и RIGHT
+  if (e.keyCode !== 37 &amp;&amp; e.keyCode !== 39) return;
+  // Если долгое удержание еще не активировано, активируем его через 1 секунду
+  if (!longJumping.current.time)
+    longJumping.current.time = setTimeout(
+      () =&gt; (longJumping.current.long = true),
+      1000
+    );
+
+  switch (e.keyCode) {
+    case 37:
+      // Перемотка назад с использованием долгого удержания или обычной длительности SKIP_TIME
+      skipBack(longJumping.current.long ? 45 : SKIP_TIME);
+      break;
+    case 39:
+      // Перемотка вперед с использованием долгого удержания или обычной длительности SKIP_TIME
+      skip(longJumping.current.long ? 45 : SKIP_TIME);
+      break;
+  }
+};
+
+// Обработка события отпускания клавиши на прогресс-баре
+var progressKeyUp = (e) =&gt; {
+  // Проверка нажатых клавиш LEFT и RIGHT
+  if (e.keyCode !== 37 &amp;&amp; e.keyCode !== 39) return;
+  // Очистка таймаута для долгого удержания
+  clearTimeout(longJumping.current.time);
+  longJumping.current = { long: false, time: false };
+};
+
+// Функция для установки пропуска контента
+function isSkipFunc(value, custom = null, pos = 0) {
+  // Установка состояния пропуска контента
+  var timeV = value == isSkip.forward ? isSkip.time ?? 0 : 0;
+  setIsSkip((prev) =&gt; {
+    return {
+      show: true,
+      forward: value,
+      time: timeV + (custom ?? SKIP_TIME),
+      pos,
+    };
+  }, false);
+  isSkipEl.current = {
+    show: true,
+    forward: value,
+    time: timeV + (custom ?? SKIP_TIME),
+    pos,
+  };
+  setIsSkip((prev) =&gt; {
+    return {
+      show: false,
+      forward: value,
+      time: timeV + (custom ?? SKIP_TIME),
+      pos,
+    };
+  });
+}
+
+// Функция для перемотки назад
+var skipBack = (custom = null) =&gt; {
+  var inter = custom ?? SKIP_TIME;
+  if (isLive) {
+    var t = getDateWithTimezone();
+    var start = unixTimeToFormatted(startTime).split(&quot;:&quot;);
+    var t1 = (start[0] * 60 + +start[1]) * 60;
+    var currentTime =
+      (t.getHours() * 60 + t.getMinutes()) * 60 + t.getSeconds();
+    currentTime -= t1;
+
+    setTVPos(currentTime - inter);
+    onClickRestart();
+    return;
+  }
+  progressBar.current.value -= inter;
+  isSkipFunc(false, custom, progressBar.current.value);
+  setSeekToolTip(progressBar.current.value, true);
+  setTrackValue(progressBar.current.value);
+};
+
+// Функция для перемотки вперед
+var skip = (custom = null) =&gt; {
+  var inter = custom ?? SKIP_TIME;
+  progressBar.current.value = +progressBar.current.value + inter;
+  isSkipFunc(true, custom, progressBar.current.value);
+  setSeekToolTip(progressBar.current.value, true);
+  setTrackValue(progressBar.current.value);
+};</code></pre>
+</doc-codeblock></div>
+</doc-panel>
+<doc-panel id="часть-3" collapsed>
+    <template #title>Часть 3</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">// Установка значения трека (прогресс-бара)
+function setTrackValue(value) {
+  // Вычисление процента на основе переданного значения
+  var percent = isNaN(value) ? 0 : value &lt; 0 ? 0 : value;
+  // Если текущее время проигрывателя меньше или равно 0, устанавливаем процент в 0
+  if (getCurrentTimePlayer() &lt;= 0) percent = 0;
+  // Установка значения прогресс-бара
+  progressBar.current.value = percent;
+  // Вычисление значения прогресса в процентах
+  var progValue =
+    durationOfSecondsEl.current === 0
+      ? 0
+      : parseFloat((100 * percent) / durationOfSecondsEl.current).toFixed(2);
+  // Установка размера фона прогресс-бара
+  progressBar.current.style.backgroundSize = progValue + &quot;% 100%&quot;;
+
+  // Вычисление нового значения для ползунка трека (sliderThumb) и подсказки (seekToolTip)
+  var newValue =
+    progValue === 0
+      ? 0
+      : ((percent - progressBar.current.min) * 100) /
+        (progressBar.current.max - progressBar.current.min);
+
+  // Установка позиции ползунка трека
+  if (sliderThumb.current)
+    sliderThumb.current.style.left = `${Math.min(newValue, 100)}%`;
+  // Установка позиции подсказки
+  if (seekToolTip.current)
+    seekToolTip.current.style.left = `${Math.min(newValue, 100)}%`;
+}
+
+// Установка значения подсказки (seekToolTip)
+function setSeekToolTip(durationFilm, line = false) {
+  // Вычисление процента на основе переданного значения длительности фильма
+  var percentage = isLive
+    ? 0
+    : TV &amp;&amp; !line
+    ? getCurrentTimePlayer()
+    : durationFilm;
+
+  var fPercentage = percentage;
+  if (isLive) {
+    var t = getDateWithTimezone();
+    percentage = (t.getHours() * 60 + t.getMinutes()) * 60 + t.getSeconds();
+  } else if (TV) {
+    var times = toHHMMSS(percentage).split(&quot;:&quot;);
+    var startTimes = unixTimeToFormatted(startTimeEl.current).split(&quot;:&quot;);
+    var t1, t2;
+    if (times.length &gt; 2) {
+      t1 = (startTimes[0] * 60 + +startTimes[1]) * 60;
+      t2 = (times[0] * 60 + +times[1]) * 60 + +times[2];
+      var t = t1 + t2;
+      percentage = t;
+    } else {
+      t1 = (startTimes[0] * 60 + +startTimes[1]) * 60;
+      t2 = times[0] * 60 + +times[1];
+      var t = t1 + t2;
+      percentage = t;
+    }
+
+    var t = getDateWithTimezone();
+    var currentTime =
+      (t.getHours() * 60 + t.getMinutes()) * 60 + t.getSeconds();
+    currentTime -= t1;
+    var ct = fPercentage;
+    if (
+      ct &gt;= currentTime ||
+      (isCurrentProgram &amp;&amp; ct &gt;= getVideoDuration())
+    ) {
+      setTVPos(0);
+      onClickLive();
+    }
+  }
+
+  // Если текущее время превышает длительность видео и имеется следующая программа, выполняется переключение на следующую программу
+  if (
+    TV &amp;&amp;
+    (isNaN(fPercentage) ? 0 : fPercentage) &gt; durationOfSeconds &amp;&amp;
+    durationOfSeconds &gt; 0
+  ) {
+    setTVPos(1);
+    onAutoNext();
+  }
+
+  // Форматирование длительности в часы, минуты и секунды
+  var formattedDuration = toHHMMSS(percentage);
+  seekToolTip.current.innerText = formattedDuration;
+
+  // Обновление текущей длительности видео
+  if (currentDurationEl.current &amp;&amp; !startTime)
+    currentDurationEl.current.innerText = formattedDuration;
+}
+
+// Обработчик клика по рекламе
+function onClickAD(mode) {
+  if (!mode) return;
+  // Установка режима модального окна
+  setModalMode(mode);
+  // Показ модального окна
+  if (onShowModal) onShowModal(mode);
+  toggleModal();
+}
+
+// Состояние отображения модального окна и функция для его переключения
+var [isShowingModal, toggleModal] = useModal(false);
+
+// Референс для элемента управления проигрывателя (playerControls)
+var playerControls = useRef();</code></pre>
+</doc-codeblock></div>
+</doc-panel>
+<doc-panel id="часть-4" collapsed>
+    <template #title>Часть 4</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">return (
+  &lt;React.Fragment&gt;
+    {/* Модальное окно */}
+    &lt;Modal
+      bottom={() =&gt; null}
+      show={isShowingModal}
+      long
+      hide={() =&gt; {
+        // Скрытие модального окна и выполнение onHideModal и toggleModal
+        if (onHideModal) onHideModal();
+        toggleModal();
+      }}
+    &gt;
+      &lt;div className={&quot;col &quot; + classes.audioTracks}&gt;
+        {/* Отображение списка аудиодорожек, субтитров, уровней или форматов видео */}
+        {(modalMode === &quot;aspect&quot;
+          ? aspects
+          : modalMode === &quot;levels&quot;
+          ? Array.isArray(levels)
+            ? levels
+            : []
+          : modalMode === &quot;audio&quot;
+          ? Array.isArray(tracks)
+            ? tracks
+            : []
+          : Array.isArray(subtitles)
+          ? subtitles
+          : []
+        ).map((tr, i) =&gt; {
+          // Проверка текущего режима модального окна
+          const isAudio = modalMode == &quot;audio&quot;;
+          const isSub = modalMode == &quot;subtitles&quot;;
+          const isLevel = modalMode == &quot;levels&quot;;
+          const isAspect = modalMode == &quot;aspect&quot;;
+
+          // Определение текущего выбранного идентификатора
+          const currentId = isAspect
+            ? aspect
+            : isAudio
+            ? track
+            : isLevel
+            ? level
+            : subtitleTrack;
+
+          // Определение, является ли текущий элемент выбранным
+          const isSelected =
+            currentId === (isAspect ? tr.text : isLevel ? i : tr.id) ||
+            (!currentId &amp;&amp; tr?.default);
+
+          return (
+            &lt;Focus
+              key={tr.id || i}
+              onHandleEnter={() =&gt; {
+                // Обработчик выбора элемента
+                if (isSub) onChangeSubtitle(tr);
+                else if (isAudio) onChangeAudioTrack(tr.id);
+                else if (isAspect) onChangeAspect(tr.text);
+                else onChangeLevel({ ...tr, id: i });
+                // Выполнение onHideModal и toggleModal
+                if (onHideModal) onHideModal();
+                toggleModal();
+              }}
+              className={[
+                classes.track,
+                isLevel || isAspect ? classes.lvl : &quot;&quot;,
+                isSelected ? classes.trackSelected : &quot;&quot;,
+              ].join(&quot; &quot;)}
+              makeFocus={isSelected}
+              focusClass=&quot;focus-link&quot;
+              tab={1}
+            &gt;
+              {isAspect
+                ? tr.text.includes(&quot;:&quot;)
+                  ? tr.text
+                  : t(tr.text)
+                : isLevel
+                ? tr.height + &quot;p&quot;
+                : tr?.lang || t(&quot;undefined&quot;)}
+            &lt;/Focus&gt;
+          );
+        })}
+        {/* Отображение опции &quot;Выключено&quot; для субтитров */}
+        {modalMode === &quot;subtitles&quot; ? (
+          &lt;Focus
+            onHandleEnter={() =&gt; {
+              // Выключение субтитров
+              onChangeSubtitle(&quot;off&quot;);
+              // Выполнение onHideModal и toggleModal
+              if (onHideModal) onHideModal();
+              toggleModal();
+            }}
+            className={
+              classes.track +
+              &quot; &quot; +
+              (subtitleTrack === undefined || subtitleTrack === &quot;off&quot;
+                ? classes.trackSelected
+                : &quot;&quot;)
+            }
+            makeFocus={subtitleTrack === &quot;off&quot; || subtitleTrack === undefined}
+            focusClass=&quot;focus-link&quot;
+            tab={1}
+          &gt;
+            {t(&quot;Off&quot;)}
+          &lt;/Focus&gt;
+        ) : (
+          // Отображение опции &quot;Авто&quot; для уровней видео
+          modalMode === &quot;levels&quot; &amp;&amp; (
+            &lt;Focus
+              onHandleEnter={() =&gt; {
+                // Выбор опции &quot;Авто&quot;
+                onChangeLevel({ id: -1 });
+                // Выполнение onHideModal и toggleModal
+                if (onHideModal) onHideModal();
+                toggleModal();
+              }}
+              className={
+                classes.track +
+                &quot; &quot; +
+                (level === -1 ? classes.trackSelected : &quot;&quot;)
+              }
+              focusClass=&quot;focus-link&quot;
+              tab={1}
+            &gt;
+              {t(&quot;Auto&quot;)}
+            &lt;/Focus&gt;
+          )
+        )}
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+
+    {/* Анимация перехода */}
+    &lt;CSSTransition
+      unmountOnExit
+      classNames=&quot;fade2&quot;
+      in={isSkip.show}
+      timeout={200}
+      onExit={() =&gt; {
+        // Переход к указанной позиции в видео
+        jumpVideo();
+      }}
+      onExited={() =&gt; {
+        // Сброс информации о переходе
+        isSkipEl.current = {};
+        if (isSkip?.time === 0) return;
+        setIsSkip({ ...isSkip, time: 0 }, false);
+      }}
+    &gt;
+      &lt;div
+        style={{
+          position: &quot;absolute&quot;,
+          top: &quot;0&quot;,
+          [isSkip.forward ? &quot;right&quot; : &quot;left&quot;]: &quot;0&quot;,
+          height: &quot;100%&quot;,
+          width: &quot;50%&quot;,
+          display: &quot;flex&quot;,
+          justifyContent: &quot;center&quot;,
+          alignItems: &quot;center&quot;,
+          background: &quot;#00000059&quot;,
+          zIndex: 2,
+        }}
+      &gt;
+        &lt;div&gt;
+          &lt;img
+            width={is4k === 2 ? 140 : is4k === 1 ? 360 : 180}
+            src={require(`../../assets/images/${
+              isSkip.forward ? &quot;rightSkipNew.png&quot; : &quot;leftSkipNew.png&quot;
+            }`)}
+          /&gt;
+          &lt;p className=&quot;fs-50 control&quot;&gt;
+            {isSkip.forward ? &quot;+&quot; : &quot;-&quot;}
+            {Math.floor(isSkip.time)} {t(&quot;sec.&quot;)}
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/CSSTransition&gt;
+    {/* Отображение элементов управления плеером */}
+    {showControl.show &amp;&amp; (
+      &lt;div
+        id=&quot;player-controls&quot;
+        ref={playerControls}
+        className={classes.background}
+      &gt;
+        &lt;div
+          style={showControl.clear ? { padding: 0 } : {}}
+          className={
+            classes.controls +
+            (levels?.length &gt; 1 || tracks?.length &gt; 1 || subtitles?.length &gt; 0
+              ? &quot; &quot; +
+                (TV ? classes.control_padding_tv : classes.control_padding)
+              : &quot;&quot;)
+          }
+        &gt;
+          &lt;div className={classes.progress_wrapper}&gt;
+            &lt;h1
+              style={showControl.clear ? { display: &quot;none&quot; } : {}}
+              ref={currentDurationEl}
+              id=&quot;current-duration&quot;
+            &gt;
+              {unixTimeToFormatted(startTime)}
+            &lt;/h1&gt;
+            &lt;Space
+              style={showControl.clear ? { display: &quot;none&quot; } : {}}
+              width={30}
+            /&gt;
+            &lt;div className={classes.video_progress}&gt;
+              {!showControl.quick &amp;&amp; children}
+              &lt;div
+                style={showControl.clear ? { display: &quot;none&quot; } : {}}
+                className={classes.slider_wrapper}
+              &gt;
+                &lt;Focus
+                  ref={rangeVideo}
+                  onFocus={() =&gt; {
+                    return loading.current || !seekToolTip.current?.style
+                      ? null
+                      : (seekToolTip.current.style.display = &quot;block&quot;);
+                  }}
+                  onUnfocus={() =&gt; {
+                    return loading.current || !seekToolTip.current?.style
+                      ? null
+                      : (seekToolTip.current.style.display = &quot;none&quot;);
+                  }}
+                  tag=&quot;input&quot;
+                  className={classes.seek}
+                  onKeyDown={progressKeyDown}
+                  onKeyUp={progressKeyUp}
+                  focusClass=&quot;focus-progress&quot;
+                  id=&quot;progress-bar-player&quot;
+                  max={durationOfSeconds}
+                  min=&quot;0&quot;
+                  type=&quot;range&quot;
+                /&gt;
+                &lt;span
+                  ref={sliderThumb}
+                  className={classes.slider_thumb}
+                &gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div
+                style={showControl.clear ? { display: &quot;none&quot; } : {}}
+                className={classes.current}
+                ref={seekToolTip}
+                id=&quot;seek-tooltip&quot;
+              &gt;
+                00:00
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;Space
+              style={showControl.clear ? { display: &quot;none&quot; } : {}}
+              width={30}
+            /&gt;
+            &lt;h1
+              style={showControl.clear ? { display: &quot;none&quot; } : {}}
+              ref={videoDurationEl}
+              id=&quot;video-duration&quot;
+            &gt;
+              {endTime
+                ? unixTimeToFormatted(endTime)
+                : durationOfSeconds
+                ? toHHMMSS(durationOfSeconds)
+                : &quot;00:00&quot;}
+            &lt;/h1&gt;
+          &lt;/div&gt;
+          &lt;div
+            style={showControl.clear ? { display: &quot;none&quot; } : {}}
+            className={[
+              &quot;row&quot;,
+              (left || right) &amp;&amp; !loading.current ? &quot;between&quot; : &quot;center&quot;,
+              classes.control_bottom,
+            ].join(&quot; &quot;)}
+          &gt;
+            {!showControl.quick &amp;&amp;
+              (left ?? &lt;span style={{ width: &quot;300px&quot; }}&gt;&lt;/span&gt;)}
+            &lt;span
+              className={&quot;row &quot; + classes.control_buttons}
+              style={
+                showControl.quick
+                  ? { display: &quot;none&quot; }
+                  : { alignItems: &quot;center&quot; }
+              }
+            &gt;
+              &lt;FocusImage
+                data-margin
+                onHandleEnter={onPrevious}
+                heightImg={HEIGHT_ICON}
+                img={
+                  TV
+                    ? modifiedPlugins.previous.show &amp;&amp; left
+                      ? require(&quot;../../assets/images/Left.png&quot;)
+                      : &quot;&quot;
+                    : modifiedPlugins.previous.show
+                    ? require(&quot;../../assets/images/Left.png&quot;)
+                    : &quot;&quot;
+                }
+                focusImg={
+                  TV
+                    ? modifiedPlugins.previous.show &amp;&amp; left
+                      ? require(&quot;../../assets/images/left1.png&quot;)
+                      : &quot;&quot;
+                    : modifiedPlugins.previous.show
+                    ? require(&quot;../../assets/images/left1.png&quot;)
+                    : &quot;&quot;
+                }
+              /&gt;
+              {modifiedPlugins.back.show &amp;&amp; (
+                &lt;FocusImage
+                  onHandleEnter={() =&gt; skipBack()}
+                  heightImg={HEIGHT_ICON}
+                  img={require(&quot;../../assets/images/leftSkip.png&quot;)}
+                  focusImg={require(&quot;../../assets/images/leftSkip1.png&quot;)}
+                /&gt;
+              )}
+              {modifiedPlugins.playStop.show &amp;&amp; (
+                &lt;div className={classes.center_buttons}&gt;
+                  &lt;FocusImage
+                    data-play
+                    onHandleEnter={togglePlay}
+                    heightImg={is4k === 2 ? 50 : is4k === 1 ? 120 : 86}
+                    widthImg={is4k === 2 ? 45 : is4k === 1 ? 100 : 75}
+                    img={require(`../../assets/images/${
+                      !isPlay ? &quot;startIcon&quot; : &quot;Pause-button&quot;
+                    }.png`)}
+                    focusImg={require(`../../assets/images/${
+                      !isPlay ? &quot;startIcon1&quot; : &quot;Pause-button1&quot;
+                    }.png`)}
+                  /&gt;
+                  &lt;div className={classes.tracks}&gt;
+                    {tracks?.length &gt; 1 &amp;&amp; (
+                      &lt;Focus
+                        onHandleEnter={() =&gt; onClickAD(&quot;audio&quot;)}
+                        focusClass=&quot;focus-secondary&quot;
+                        className={classes.trackBtn}
+                      &gt;
+                        &lt;img src={audioTrack} alt=&quot;audio-track&quot; /&gt;
+                      &lt;/Focus&gt;
+                    )}
+                    {subtitles?.length &gt; 0 &amp;&amp; (
+                      &lt;Focus
+                        onHandleEnter={() =&gt; onClickAD(&quot;subtitles&quot;)}
+                        focusClass=&quot;focus-secondary&quot;
+                        className={classes.trackBtn}
+                      &gt;
+                        &lt;img
+                          src={subtitleTrackIcon}
+                          alt=&quot;subtitle-track&quot;
+                        /&gt;
+                      &lt;/Focus&gt;
+                    )}
+                    {levels?.length &gt; 1 &amp;&amp; (
+                      &lt;Focus
+                        onHandleEnter={() =&gt; onClickAD(&quot;levels&quot;)}
+                        focusClass=&quot;focus-secondary&quot;
+                        className={classes.trackBtn}
+                      &gt;
+                        &lt;img
+                          src={require(&quot;../../assets/LevelTrack.png&quot;)}
+                          alt=&quot;video-level&quot;
+                        /&gt;
+                      &lt;/Focus&gt;
+                    )}
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              )}
+              {modifiedPlugins.skip.show &amp;&amp; (
+                &lt;FocusImage
+                  onHandleEnter={() =&gt; skip()}
+                  heightImg={HEIGHT_ICON}
+                  img={require(&quot;../../assets/images/rightSkip.png&quot;)}
+                  focusImg={require(&quot;../../assets/images/rightSkip1.png&quot;)}
+                /&gt;
+              )}
+
+              {!isLive &amp;&amp; !isCurrentProgram &amp;&amp; (
+                &lt;FocusImage
+                  data-margin
+                  onHandleEnter={onNext}
+                  heightImg={HEIGHT_ICON}
+                  img={
+                    modifiedPlugins.next.show
+                      ? require(&quot;../../assets/images/Right.png&quot;)
+                      : &quot;&quot;
+                  }
+                  focusImg={
+                    modifiedPlugins.next.show
+                      ? require(&quot;../../assets/images/right1.png&quot;)
+                      : &quot;&quot;
+                  }
+                /&gt;
+              )}
+
+              {isLive &amp;&amp; (
+                &lt;FocusImage
+                  data-margin
+                  onHandleEnter={() =&gt; {
+                    setTVPos(1);
+                    onClickRestart();
+                  }}
+                  heightImg={45}
+                  img={require(&quot;../../assets/images/restart0.png&quot;)}
+                  focusImg={require(&quot;../../assets/images/restart1.png&quot;)}
+                /&gt;
+              )}
+              {TV &amp;&amp; (
+                &lt;React.Fragment&gt;
+                  &lt;Focus
+                    onHandleEnter={() =&gt; !isLive &amp;&amp; onClickLive()}
+                    focusClass=&quot;focus-secondary&quot;
+                    className={[
+                      classes.liveButton,
+                      isLive ? classes.liveOn : &quot;&quot;,
+                    ].join(&quot; &quot;)}
+                  &gt;
+                    &lt;div&gt;
+                      &lt;span&gt;&lt;/span&gt;
+                      &lt;p&gt;{t(&quot;Live&quot;)}&lt;/p&gt;
+                    &lt;/div&gt;
+                  &lt;/Focus&gt;
+                &lt;/React.Fragment&gt;
+              )}
+              {/* &lt;Focus
+                onHandleEnter={() =&gt; onClickAD(&quot;aspect&quot;)}
+                focusClass=&quot;focus&quot;
+                className={classes.aspectBtn}
+              &gt;
+                &lt;img src={aspectRatioIcon} alt=&quot;.&quot; /&gt;
+              &lt;/Focus&gt; */}
+            &lt;/span&gt;
+            {!showControl.quick &amp;&amp;
+              (right ?? &lt;span style={{ width: &quot;300px&quot; }}&gt;&lt;/span&gt;)}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    )}
+  &lt;/React.Fragment&gt;
+);</code></pre>
+</doc-codeblock></div>
+</doc-panel>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results />
+                            </div>
+                            <footer class="clear-both">
+                            
+                                <nav class="flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../player/control/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Контрол и логика плеера</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../player/control/indexjs/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">/src/components/Player​TV/index.​js</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div class="border-t dark:border-dark-650 pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between">
+                                <div>
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div class="docs-copyright py-2 text-gray-500 dark:text-dark-350 text-sm leading-relaxed"><p>© Copyright 2023. All rights reserved.</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-white border-gray-200 lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton dark:bg-dark-850 dark:border-dark-650">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-gray-200 dark:bg-dark-600 rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="docs-overlay-target"></div>
+
+    <script>window.__DOCS__ = { "title": "/src/components/PlayerTV/Control.js", level: 3, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+</body>
+</html>
